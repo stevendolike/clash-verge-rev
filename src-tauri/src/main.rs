@@ -11,7 +11,6 @@ mod feat;
 mod utils;
 
 use crate::utils::{init, resolve, server};
-use tauri::tray::TrayIconBuilder;
 
 fn main() -> std::io::Result<()> {
     // 单例检测
@@ -43,8 +42,6 @@ fn main() -> std::io::Result<()> {
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_shell::init())
         .setup(|app| {
-            TrayIconBuilder::new().build(app)?;
-
             #[cfg(target_os = "macos")]
             {
                 use tauri::menu::MenuBuilder;
