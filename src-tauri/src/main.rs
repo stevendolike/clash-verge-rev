@@ -31,6 +31,9 @@ fn main() -> std::io::Result<()> {
 
     crate::log_err!(init::init_config());
 
+    #[cfg(debug_assertions)]
+    let devtools = tauri_plugin_devtools::init();
+
     #[allow(unused_mut)]
     let mut builder = tauri::Builder::default()
         .plugin(tauri_plugin_updater::Builder::new().build())
@@ -116,6 +119,11 @@ fn main() -> std::io::Result<()> {
             // clash api
             cmds::clash_api_get_proxy_delay
         ]);
+
+    #[cfg(debug_assertions)]
+    {
+        builder = builder.plugin(devtools);
+    }
 
     let app = builder
         .build(tauri::generate_context!())
