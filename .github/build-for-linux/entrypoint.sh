@@ -14,7 +14,9 @@ if [ "$INPUT_TARGET" = "x86_64-unknown-linux-gnu" ]; then
     find /usr -name "glib-2.0.pc"
     cat /usr/lib/x86_64-linux-gnu/pkgconfig/glib-2.0.pc
     export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
-    pkg-config --libs --cflags glib-2.0
+    pkg-config --list-all 
+    ls /usr/lib/x86_64-linux-gnu/pkgconfig/*glib*
+
 elif [ "$INPUT_TARGET" = "i686-unknown-linux-gnu" ]; then
     dpkg --add-architecture i386
     apt-get update
