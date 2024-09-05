@@ -16,7 +16,7 @@ if [ "$INPUT_TARGET" = "x86_64-unknown-linux-gnu" ]; then
     export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
     pkg-config --list-all 
     ls /usr/lib/x86_64-linux-gnu/pkgconfig/*glib*
-
+    rustc --version
 elif [ "$INPUT_TARGET" = "i686-unknown-linux-gnu" ]; then
     dpkg --add-architecture i386
     apt-get update
