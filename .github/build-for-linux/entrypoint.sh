@@ -11,6 +11,7 @@ if [ "$INPUT_TARGET" = "x86_64-unknown-linux-gnu" ]; then
     add-apt-repository universe
     apt-get update 
     apt-get install -y build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev libgtk-3-dev
+    export PKG_CONFIG_PATH=/usr/share/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
 elif [ "$INPUT_TARGET" = "i686-unknown-linux-gnu" ]; then
     dpkg --add-architecture i386
     apt-get update
