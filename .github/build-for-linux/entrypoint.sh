@@ -11,12 +11,12 @@ if [ "$INPUT_TARGET" = "x86_64-unknown-linux-gnu" ]; then
     add-apt-repository universe
     apt-get update 
     apt-get install -y build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev libglib2.0-dev
-    find /usr -name "glib-2.0.pc"
+    export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
     pkg-config --libs --cflags glib-2.0
-    export PKG_CONFIG_PATH=/usr/share/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
 elif [ "$INPUT_TARGET" = "i686-unknown-linux-gnu" ]; then
     dpkg --add-architecture i386
     apt-get update
+    sudo apt install gcc:i386 g++:i386 make:i386
     apt-get install -y build-essential:i386 curl:i386 wget:i386 file:i386 libxdo-dev:i386 libssl-dev:i386 libayatana-appindicator3-dev:i386 librsvg2-dev:i386 libgtk-3-dev:i386
     export PKG_CONFIG_PATH=/usr/lib/i386-linux-gnu/pkgconfig/:$PKG_CONFIG_PATH
     export PKG_CONFIG_SYSROOT_DIR=/
