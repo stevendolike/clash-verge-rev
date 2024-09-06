@@ -17,6 +17,7 @@ if [ "$INPUT_TARGET" = "x86_64-unknown-linux-gnu" ]; then
     pkg-config --list-all 
     ls /usr/lib/x86_64-linux-gnu/pkgconfig/*glib*
     rustc --version
+    PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 pkg-config --libs --cflags glib-2.0
 elif [ "$INPUT_TARGET" = "i686-unknown-linux-gnu" ]; then
     dpkg --add-architecture i386
     apt-get update
